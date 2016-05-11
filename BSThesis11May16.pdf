@@ -1,0 +1,163 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+% !TEX root = masterDoc.tex
+% !TEX spellcheck = en-US
+%--------------------------------- University of Iceland Settings
+\documentclass[a4paper,10pt,twoside,BCOR=10mm]{scrbook}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[icelandic, english]{babel}
+\usepackage{t1enc}
+\usepackage{graphicx}
+\usepackage[intoc]{nomencl}
+\usepackage{enumerate,color}
+\usepackage{url}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{appendix}
+\usepackage{eso-pic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\bibliographystyle{unsrt}
+\usepackage[sf,normalsize]{subfigure}
+\usepackage[format=plain,labelformat=simple,labelsep=colon]{caption}
+\usepackage{placeins}
+\usepackage{tabularx}
+\usepackage{float} 
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0cm}
+\raggedbottom
+% \setkomafont{subsection}{\normalfont\sffamily}
+
+% Eins og templatið á að vera
+% \setkomafont{captionlabel}{\itshape}
+% \setkomafont{caption}{\itshape}
+
+% Mun fallegri lausn
+\setkomafont{captionlabel}{\itshape}
+\setkomafont{caption}{\itshape}
+\setkomafont{section}{\FloatBarrier\Large}
+%\setcapwidth[l]{\textwidth}
+\setcapwidth{\textwidth}
+\setcapindent{1em}
+
+
+% Times new roman
+%\usepackage[T1]{fontenc}
+%\usepackage{mathptmx}
+
+%%%%%%%%%%% MODIFY THESE LINES ONLY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thesisyear{2016}       						% Year thesis submitted
+\def\thesismonth{March}						% Month thesis submitted
+\def\thesisauthor{Þorsteinn Hjörtur Jónsson}					% Thesis authoreiningaraðferðinni
+\def\thesistitle{Mathematical Structure of Steady-State Solutions for an Open Quantum System Consisting of Electrons in a Photon Cavity} 						% Title of thesis
+%\def\thesisshorttitle{XXShort title (50 characters including spaces)} 	% Title of thesis
+\def\thesiscredits{16} 							% Credits awarded for the project
+\def\thesissubject{Mathematics}
+\def\thesiskind{B.Sc.}							% Masters of PhD thesis
+\def\thesiskindformal{}				% Masters of PhD thesis
+\def\thesisnroftutors{1}						% Number of tutors
+\def\thesisschool{School of Engineering and {Natural Sciences}}		% School
+\def\thesisfaculty{Faculty of Physics}							% Faculty
+\def\thesisaddress{Hjarðarhagi 2}				% Office address
+\def\thesispostalcode{107, Reykjavik}			% Office address
+\def\thesistelephone{525 4000}						% Office telephone
+\def\thesispublisher{XX}						% Publisher
+\def\thesistutors{Prof.\ Viðar Guðmundsson}
+\def\thesisrepresentative{XXNN3}					% Tutors name
+\def\thesiscommittee{Prof.\ Viðar Guðmundsson }
+\def\thesiskeywords{Steady-State Solutions, Open Quantum System, Keyword3}			% Keywords
+\def\thesisISBN{XX}           						% Thesis ISBN number
+\def\thesisdedication{Dedication}
+\def\thesisPrinting{Háskólaprent, Fálkagata 2, 107 Reykjavík}
+
+% Function to add footer to frontpage
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\hspace*{-0.6cm}
+\includegraphics[width=\paperwidth,height=\paperheight,
+keepaspectratio]{foot.png}
+}}
+\setlength{\unitlength}{\paperwidth}
+\begin{picture}(0,0)(0,-0.15)
+\put(0,0){\color{white}\parbox{1\paperwidth}{\centering\bfseries\sffamily \Large \thesisfaculty \\
+University of Iceland\\
+\thesisyear}}
+\end{picture}
+}
+
+\usepackage{textcomp}                       % fix warning with missing font shapes
+
+\usepackage{xspace}                         % to get the right spacing after macros
+
+%\usepackage{indentfirst}                    % indent the first paragraph of each section
+
+%\usepackage{mparhack,fixltx2e,relsize}      % typographical niceties
+
+\usepackage{etoolbox}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
+%******************************************************************
+% Import settings
+%******************************************************************
+%******************************************************************
+% For Code
+\usepackage{mdframed} % To split framed environments at page boundaries
+\usepackage{minted}
+\usemintedstyle{tango}
+% colors
+\definecolor{mygreen}{rgb}{0,0.7,0.42}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{backcolor}{rgb}{0.992, 0.965, 0.9}
+\definecolor{harvestgold}{rgb}{0.85,0.57,0.0}
+\definecolor{indigo}{rgb}{0.0,0.25,0.888888882}
+%******************************************************************
+% User Defined Commands
+% First some very important packages:
+%\usepackage [autostyle, english = american]{csquotes}
+%\MakeOuterQuote{"}
+\usepackage{xparse}
+\setlength{\parindent}{0pt} % removes indentation
+\usepackage[parfill]{parskip} % gives an empty line for a new paragraph
+\usepackage{enumerate}
+\input{NZmathcommands}
+\usepackage[left=1.5in,right=1in,top=1in,bottom=1in]{geometry}
+
+\usepackage{scrhack}                        % fix warnings when using KOMA with listings package
+\usepackage{cleveref}
+
+%******************************************************************
+% Document
+%******************************************************************
+\begin{document}
+%******************************************************************
+% Frontpage and summar_abstract
+%******************************************************************
+\input{Titlepage}
+\input{Abstract}
+\input{Dedication}
+\tableofcontents
+\cleardoublepage
+%******************************************************************
+% Body matter
+%******************************************************************
+\input{Chapter1/introduction}
+\input{Chapter2/markovApproximation}
+\input{Chapter2/qIntegral}
+\input{Chapter2/DiracHadamard}
+\input{Chapter2/Kronecker}
+\input{Chapter3/ComputationalModel}
+\input{Chapter4/ExperimentalResults}
+\input{Chapter5/Conclusion}
+% *****************************************************************
+% Appendices and bibliography
+%******************************************************************
+\bibliography{mod_qd}
+\end{document}
